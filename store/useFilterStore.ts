@@ -9,13 +9,3 @@ export const useFilterStore = create<FilterState>((set) => ({
   searchTerm: "",
   setSearchTerm: (term) => set({ searchTerm: term }),
 }));
-
-interface FilterState {
-  searchTerm: string;
-  setSearchTerm: (term: string) => void;
-}
-
-export const useFilterStore = create<FilterState>((set) => ({
-  searchTerm: "",
-  setSearchTerm: (term) => set({ searchTerm: term }),
-}));
