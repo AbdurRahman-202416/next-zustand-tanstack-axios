@@ -6,7 +6,10 @@ import { fetchUsers } from "../../lib/api";
 import { useFilterStore } from "../../store/useFilterStore";
 
 export default function UserList() {
-  const { data, isLoading, isError } = useQuery(["users"], fetchUsers);
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["users"],
+    queryFn: fetchUsers,
+  });
   const searchTerm = useFilterStore((state) => state.searchTerm.toLowerCase());
 
   if (isLoading) return <div>Loading users...</div>;
