@@ -1,10 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface FilterState {
-  searchTerm: string;
-  setSearchTerm: (term: string) => void;
-}
 interface User {
   id: number;
   name: string;
@@ -16,18 +12,6 @@ interface UserState {
   setUser: (user: User) => void;
   fetchUser: () => Promise<void>;
 }
-
-export const useFilterStore = create<FilterState>()(
-  persist(
-    (set) => ({
-      searchTerm: "",
-      setSearchTerm: (term) => set({ searchTerm: term }),
-    }),
-    {
-      name: "filter-store",
-    }
-  )
-);
 
 export const useUserStore = create<UserState>()(
   persist(
@@ -47,7 +31,7 @@ export const useUserStore = create<UserState>()(
       },
     }),
     {
-      name: "user-store",
+      name: "user-store", 
     }
   )
 );
