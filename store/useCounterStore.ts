@@ -8,7 +8,14 @@ const useMyData = create(
       increment: () => set((state) => ({ count: state.count + 1 })),
       reset: () => set({ count: 0 }),
       decrement: () =>
-        set((state) => ({ count: state.count > 0 ? state.count - 1 : 0 })),
+        set((state) => {
+          if (state.count > 0) {
+            return { count: state.count - 1 };
+          } else {
+            alert("Count cannot be negative");
+            return { count: 0 };
+          }
+        }),
     }),
     {
       name: "my-Counter-store",

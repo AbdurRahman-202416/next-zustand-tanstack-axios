@@ -11,7 +11,7 @@ export default function NotFoundPage() {
           Page Not Found
         </p>
         <br />
-        <p className="text-sm md:text-xl lg:text-2xl text-gray-500 my-12">
+        <p className="text-sm md:text-xl lg:text-2xl text-gray-700 my-12">
           Sorry, the page you are looking for could not be found.
         </p>
 
