@@ -2,10 +2,16 @@
 import useMyData from "@/store/useCounterStore";
 import Link from "next/link";
 import React from "react";
-import CardSlider from "../components/CardSlider";
 
-export default function page() {
-  const { count, increment, reset, decrement } = useMyData();
+export type T_CounterData = {
+  count: number;
+  increment: () => void;
+  reset: () => void;
+  decrement: () => void;
+};
+
+export default function Page() {
+  const { count, increment, reset, decrement } = useMyData() as T_CounterData;
   return (
     <div className=" text-center mt-10 ">
       <Link
@@ -14,7 +20,7 @@ export default function page() {
       >
         Home
       </Link>
-      <CardSlider/>
+
       <div className="flex flex-col items-center justify-center min-h-[50vh]  p-4">
         <h1 className="text-2xl font-bold">Counter Page</h1>
         <p className="mt-2 text-sm text-wrap">
