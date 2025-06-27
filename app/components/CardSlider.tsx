@@ -34,7 +34,7 @@ export default function CardSlider() {
   };
 
   return (
-    <div className=" mt-10 rounded-[12px] shadow-sm w-full h-[264px] max-w-md mx-auto items-center overflow-hidden justify-center">
+    <div className=" mt-10 rounded-[12px] shadow-sm w-full h-[264px] max-w-md mx-auto items-center py-5 px-4 overflow-hidden justify-center">
       <Swiper
         centeredSlides={true}
         spaceBetween={8}
@@ -51,7 +51,6 @@ export default function CardSlider() {
                   : "opacity-50 scale-90"
               }`}
             >
-             
               {!card.isValid && (
                 <div className="absolute inset-0 z-50 flex items-center justify-center">
                   <Image
@@ -59,19 +58,18 @@ export default function CardSlider() {
                     alt="Tip Icon"
                     width={40}
                     height={40}
-                   
                   />
                 </div>
               )}
 
-              {/* Card Image */}
               <Image
                 src={card.image}
                 alt={`Card ${card.id}`}
                 width={101}
                 height={159}
                 className={`w-full rounded-[8px] z-30 object-cover mx-auto ${
-                  card.isValid ? "opacity-100" : "opacity-30 brightness-50"}`}
+                  card.isValid ? "opacity-100" : "opacity-30 brightness-50"
+                }`}
               />
             </div>
           </SwiperSlide>
@@ -93,14 +91,29 @@ export default function CardSlider() {
       </div>
 
       {/* Bottom Info */}
-      <div className="mt-4 w-full h-[30px] px-4 items-center text-center flex flex-row justify-between text-sm">
-        <p className="text-gray-500">충전잔액</p>
-        <div className="flex items-center gap-3 justify-center">
-          <p className="font-bold text-lg">{"{5,000,000}"}원</p>
-          <button className="ml-2 px-3 py-1 text-xs bg-blue-500 text-white rounded">
-            충전
-          </button>
-        </div>
+      <div className="mt-4 w-full px-4 text-sm">
+        {cards.map((card, index) => {
+          if (index !== currentIndex - 1) return null;
+
+          return !card.isValid ? (
+            <p key={index} className="text-center">
+              사용할 수 없는 카드입니다.
+            </p>
+          ) : (
+            <div
+              key={index}
+              className="flex items-center justify-between h-[30px]"
+            >
+              <p className="text-gray-500">충전잔액</p>
+              <div className="flex items-center gap-3 justify-center">
+                <p className="font-bold text-lg">{"{5,000,000}"}원</p>
+                <button className="ml-2 px-3 py-1 text-xs bg-blue-500 text-white rounded">
+                  충전
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
