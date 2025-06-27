@@ -28,19 +28,19 @@ export default function UserList() {
   return (
     <div>
       <nav className="bg-white shadow-md rounded-lg p-4 mb-6">
-        <ul className="flex flex-wrap gap-4 justify-center">
-          <li>
+        <ul className="flex  justify-between items-center gap-2 sm:gap-4">
+          <li className="pr-4 border-r border-orange-600">
             <Link
               href="/"
-              className="text-lg font-semibold text-orange-600 px-4 py-2 rounded hover:bg-orange-100 hover:text-orange-700 transition-colors duration-200"
+              className="block text-sm md:text-base lg:text-lg font-semibold text-orange-600 px-2 hover:underline hover:text-orange-700 transition-colors duration-200"
             >
               Home
             </Link>
           </li>
-          <li>
+          <li className="pr-4 border-r border-orange-600">
             <Link
               href="/counter"
-              className="text-lg font-semibold text-orange-600 px-4 py-2 rounded hover:bg-orange-100 hover:text-orange-700 transition-colors duration-200"
+              className="block text-sm md:text-base lg:text-lg font-semibold text-orange-600 px-2 hover:underline hover:text-orange-700 transition-colors duration-200"
             >
               Counter Page
             </Link>
@@ -48,9 +48,9 @@ export default function UserList() {
           <li>
             <Link
               href="/test"
-              className="text-lg font-semibold text-orange-600 px-4 py-2 rounded hover:bg-orange-100 hover:text-orange-700 transition-colors duration-200"
+              className="block text-sm md:text-base lg:text-lg font-semibold text-orange-600 px-2 hover:underline hover:text-orange-700 transition-colors duration-200"
             >
-              Not Found Page
+              NotFound Page
             </Link>
           </li>
         </ul>

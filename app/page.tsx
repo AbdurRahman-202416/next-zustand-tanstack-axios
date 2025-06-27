@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <QueryClientProvider client={queryClient}>
       <main className="p-10 max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">User List App</h1>
+        <h1 className="text-3xl text-center text-orange-500 font-bold mb-6">User List App</h1>
         <SearchInput />
         <div className="mt-6">
           <UserList />

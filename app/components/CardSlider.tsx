@@ -14,7 +14,7 @@ const cards = [
   },
   {
     id: 2,
-    image: "/card/card-2.png",
+    image: "/card/card.png",
     name: "신한카드 트래블제로 ... (5678)",
   },
 ];
@@ -27,7 +27,7 @@ export default function CardSlider() {
   };
 
   return (
-    <div className="w-full h-[320px]  items-center gap-2 self-stretch px-4 py-8  max-w-md mx-auto">
+    <div className="w-full h-[320px] max-w-md mx-auto">
       <Swiper
         spaceBetween={24}
         centeredSlides={true}
@@ -39,7 +39,7 @@ export default function CardSlider() {
         {cards.map((card, index) => (
           <SwiperSlide key={index}>
             <div
-              className={` p-2 text-center transition-all duration-300 ${
+              className={`rounded-xl shadow-md p-2 bg-white text-center transition-all duration-300 ${
                 currentIndex - 1 === index
                   ? "opacity-100 scale-100"
                   : "opacity-50 scale-90"
@@ -48,8 +48,8 @@ export default function CardSlider() {
               <Image
                 src={card.image}
                 alt={`Card ${card.id}`}
-                width={101}
-                height={160}
+                width={320}
+                height={140}
                 className="w-full h-[140px] rounded-xl object-cover"
               />
               <p className="text-sm mt-2">{card.name}</p>
@@ -58,11 +58,12 @@ export default function CardSlider() {
         ))}
       </Swiper>
 
+      {/* Numeric Pagination only */}
       <div className="text-center mt-2 text-sm text-gray-500">
         <span className="text-red-600">{currentIndex}</span> / {cards.length}
       </div>
 
-     
+      {/* Bottom Info */}
       <div className="mt-4 w-full text-center flex flex-row justify-between text-sm">
         <p className="text-gray-500">충전잔액</p>
         <p className="font-bold text-lg">{"{5,000,000}"}원</p>
