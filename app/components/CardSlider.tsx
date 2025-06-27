@@ -32,7 +32,7 @@ export default function CardSlider() {
   };
 
   return (
-    <div className=" mt-10 rounded-[12px] shadow-sm w-full h-[264px] max-w-md mx-auto items-center justify-center">
+    <div className=" mt-10 rounded-[12px] shadow-sm w-full h-[264px] max-w-md mx-auto items-center overflow-hidden justify-center">
       <Swiper
         centeredSlides={true}
         spaceBetween={8}
