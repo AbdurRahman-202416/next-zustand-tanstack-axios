@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperCore } from "swiper/types";
-import { Pagination } from "swiper/modules";
+
 
 import "swiper/css";
 import Image from "next/image";
@@ -14,32 +14,36 @@ const cards = [
   },
   {
     id: 2,
-    image: "/card/card.png",
+    image: "/card/card-2.png",
     name: "신한카드 트래블제로 ... (5678)",
+  },
+  {
+    id: 3,
+    image: "/card/_card.png",
+    name: "현대카드 오리지널 CT",
   },
 ];
 
 export default function CardSlider() {
-  const [currentIndex, setCurrentIndex] = useState(1); // Start at 1
+  const [currentIndex, setCurrentIndex] = useState(1);
 
   const handleSlideChange = (swiper: SwiperCore) => {
     setCurrentIndex(swiper.realIndex + 1);
   };
 
   return (
-    <div className="w-full h-[320px] max-w-md mx-auto">
+    <div className=" mt-10 rounded-[12px] shadow-sm w-full h-[264px] max-w-md mx-auto items-center justify-center">
       <Swiper
-        spaceBetween={24}
         centeredSlides={true}
-        slidesPerView={1.5}
+        spaceBetween={8}
+        slidesPerView={1.7}
         onSlideChange={handleSlideChange}
-        modules={[Pagination]} // Optional: can be removed now
         className="!overflow-visible"
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index}>
             <div
-              className={`rounded-xl shadow-md p-2 bg-white text-center transition-all duration-300 ${
+              className={` text-center transition-all duration-300 ${
                 currentIndex - 1 === index
                   ? "opacity-100 scale-100"
                   : "opacity-50 scale-90"
@@ -48,15 +52,23 @@ export default function CardSlider() {
               <Image
                 src={card.image}
                 alt={`Card ${card.id}`}
-                width={320}
-                height={140}
-                className="w-full h-[140px] rounded-xl object-cover"
+                width={101}
+                height={159}
+                className="w-full rounded-[8px] object-cover mx-auto"
               />
-              <p className="text-sm mt-2">{card.name}</p>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+      {cards.map((card, index) => (
+        <div key={card.id}>
+          {currentIndex - 1 === index && (
+            <p className="text-sm text-center mt-2 transition-all duration-500 ease-out transform opacity-100 translate-y-0">
+              {card.name}
+            </p>
+          )}
+        </div>
+      ))}
 
       {/* Numeric Pagination only */}
       <div className="text-center mt-2 text-sm text-gray-500">
@@ -64,12 +76,14 @@ export default function CardSlider() {
       </div>
 
       {/* Bottom Info */}
-      <div className="mt-4 w-full text-center flex flex-row justify-between text-sm">
+      <div className="mt-4 w-full h-[30px] px-4 items-center text-center flex flex-row justify-between text-sm">
         <p className="text-gray-500">충전잔액</p>
-        <p className="font-bold text-lg">{"{5,000,000}"}원</p>
+       <div className="flex items-center gap-3 justify-center">
+         <p className="font-bold text-lg">{"{5,000,000}"}원</p>
         <button className="ml-2 px-3 py-1 text-xs bg-blue-500 text-white rounded">
           충전
         </button>
+       </div>
       </div>
     </div>
   );
